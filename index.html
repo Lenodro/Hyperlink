@@ -27,6 +27,12 @@
       z-index: 10;
     }
 
+    nav a {
+      color: white;
+      margin: 0 1rem;
+      text-decoration: none;
+    }
+
     section {
       min-height: 100vh;
       display: flex;
@@ -65,7 +71,6 @@
       border-radius: 20px;
     }
 
-    /* Hero-Section mit funktionierendem Hintergrundbild */
     .hero-section {
       position: relative;
       display: flex;
@@ -117,25 +122,22 @@
 </head>
 <body>
 
-  
-<header>
-  <h1>Hyperlink – Smarter WLAN-Router</h1>
-  <nav style="margin-top: 1rem;">
-    <a href="#" style="color:white; margin: 0 1rem; text-decoration:none;">Home</a>
-    <a href="https://hyperlink.jojosstudio.de/" style="color:white; margin: 0 1rem; text-decoration:none;">Shop</a>
-    <a href="#team" style="color:white; margin: 0 1rem; text-decoration:none;">Über uns</a>
-  </nav>
-</header>
-
+  <header>
+    <h1>Hyperlink – Smarter WLAN-Router</h1>
+    <nav style="margin-top: 1rem;">
+      <a href="#">Home</a>
+      <a href="https://hyperlink.jojosstudio.de/">Shop</a>
+      <a href="#team">Über uns</a>
+    </nav>
+  </header>
 
   <section class="hero-section">
     <h2>Willkommen</h2>
     <p>Erlebe die nächste Generation smarter Netzwerke.</p>
-<a href="https://hyperlink.jojosstudio.de/" 
-   style="margin-top:2rem; padding:1rem 2rem; background:#fff; color:#000; text-decoration:none; border-radius:8px; font-weight:bold;">
-   Jetzt Bestellen
-</a>
-
+    <a href="https://hyperlink.jojosstudio.de/" 
+       style="margin-top:2rem; padding:1rem 2rem; background:#fff; color:#000; text-decoration:none; border-radius:8px; font-weight:bold; display:inline-block;">
+       Jetzt Bestellen
+    </a>
   </section>
 
   <section class="reveal idea-section">
@@ -155,7 +157,7 @@
     </video>
   </section>
 
-  <section class="reveal">
+  <section class="reveal" id="team">
     <h2>👥 Das Team</h2>
     <p>Leon Matyba – Projektleiter<br>Julien Sperling – Projektmitglied</p>
     <img class="sticky-image" src="https://via.placeholder.com/600x400" alt="Team">
@@ -168,7 +170,6 @@
   <script>
     gsap.registerPlugin(ScrollTrigger);
 
-    // Allgemeine Reveal-Effekte
     gsap.utils.toArray(".reveal").forEach((section) => {
       gsap.fromTo(section,
         { opacity: 0, y: 100 },
@@ -185,7 +186,6 @@
         });
     });
 
-    // Hero-Text
     gsap.fromTo(".hero-section h2, .hero-section p",
       { opacity: 0, y: 40 },
       {
@@ -201,7 +201,6 @@
         }
       });
 
-    // Idee-Bild
     gsap.fromTo(".idea-image",
       { opacity: 0, scale: 0.9 },
       {
@@ -216,7 +215,6 @@
         }
       });
 
-    // Team-Bild
     gsap.utils.toArray(".sticky-image").forEach((img) => {
       gsap.fromTo(img,
         { scale: 0.8 },
