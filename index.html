@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hyperlink – Smarter WLAN-Router</title>
+
+  <!-- GSAP + ScrollTrigger CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #000;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 1rem;
+      text-align: center;
+      z-index: 10;
+    }
+
+    section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 4rem;
+      text-align: center;
+    }
+
+    footer {
+      background: #111;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    video {
+      width: 80%;
+      border-radius: 20px;
+      margin-top: 2rem;
+      transform: scale(0.95);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(60px);
+    }
+
+    h1, h2, p {
+      max-width: 800px;
+    }
+
+    .sticky-image {
+      width: 70%;
+      margin-top: 2rem;
+      border-radius: 20px;
+    }
+
+    /* Hero-Section mit funktionierendem Hintergrundbild */
+    .hero-section {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      min-height: 100vh;
+      background: url('https://images.unsplash.com/photo-1518779578993-ec3579fee39f?auto=format&fit=crop&w=1950&q=80') no-repeat center center;
+      background-size: cover;
+      color: white;
+      padding: 4rem;
+      z-index: 1;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: 0;
+    }
+
+    .hero-section h2,
+    .hero-section p {
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    .idea-section {
+      background: radial-gradient(circle at center, #0a0a0a 0%, #000000 100%);
+      padding: 5rem 2rem;
+      border-top: 1px solid #111;
+    }
+
+    .idea-image {
+      width: 60%;
+      max-width: 600px;
+      margin-top: 2rem;
+      border-radius: 20px;
+      opacity: 0;
+      transform: scale(0.9);
+    }
+  </style>
+</head>
+<body>
+
+  
+<header>
+  <h1>Hyperlink – Smarter WLAN-Router</h1>
+  <nav style="margin-top: 1rem;">
+    <a href="#" style="color:white; margin: 0 1rem; text-decoration:none;">Home</a>
+    <a href="https://hyperlink.jojosstudio.de/" style="color:white; margin: 0 1rem; text-decoration:none;">Shop</a>
+    <a href="#team" style="color:white; margin: 0 1rem; text-decoration:none;">Über uns</a>
+  </nav>
+</header>
+
+
+  <section class="hero-section">
+    <h2>Willkommen</h2>
+    <p>Erlebe die nächste Generation smarter Netzwerke.</p>
+<a href="https://hyperlink.jojosstudio.de/" 
+   style="margin-top:2rem; padding:1rem 2rem; background:#fff; color:#000; text-decoration:none; border-radius:8px; font-weight:bold;">
+   Jetzt Bestellen
+</a>
+
+  </section>
+
+  <section class="reveal idea-section">
+    <h2>💡 Die Idee</h2>
+    <p>Ein smarter Router, der dein Zuhause vernetzt, Strom spart und per App steuerbar ist.</p>
+    <img src="https://cdn.openai.com/chat-assets/hyperlink-router-dark.png" 
+         alt="Hyperlink Router" 
+         class="idea-image" />
+  </section>
+
+  <section class="reveal">
+    <h2>⚙️ Funktionen</h2>
+    <p>Automatische Netzoptimierung, Energieüberwachung und App-Steuerung.</p>
+    <video autoplay muted loop playsinline>
+      <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+      Dein Browser unterstützt kein Video.
+    </video>
+  </section>
+
+  <section class="reveal">
+    <h2>👥 Das Team</h2>
+    <p>Leon Matyba – Projektleiter<br>Julien Sperling – Projektmitglied</p>
+    <img class="sticky-image" src="https://via.placeholder.com/600x400" alt="Team">
+  </section>
+
+  <footer>
+    &copy; 2025 Leon Matyba & Julien Sperling – Projektidee „Hyperlink“
+  </footer>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Allgemeine Reveal-Effekte
+    gsap.utils.toArray(".reveal").forEach((section) => {
+      gsap.fromTo(section,
+        { opacity: 0, y: 100 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: section,
+            start: "top 80%",
+            toggleActions: "play none none reverse"
+          }
+        });
+    });
+
+    // Hero-Text
+    gsap.fromTo(".hero-section h2, .hero-section p",
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.5,
+        stagger: 0.2,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".hero-section",
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        }
+      });
+
+    // Idee-Bild
+    gsap.fromTo(".idea-image",
+      { opacity: 0, scale: 0.9 },
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 1.5,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".idea-image",
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        }
+      });
+
+    // Team-Bild
+    gsap.utils.toArray(".sticky-image").forEach((img) => {
+      gsap.fromTo(img,
+        { scale: 0.8 },
+        {
+          scale: 1,
+          duration: 1.5,
+          ease: "power1.out",
+          scrollTrigger: {
+            trigger: img,
+            start: "top 80%",
+            toggleActions: "play none none reverse"
+          }
+        });
+    });
+  </script>
+
+</body>
+</html>
